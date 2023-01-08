@@ -1,0 +1,134 @@
+---
+import images from "../../data/heroImages";
+---
+
+<section id="hero">
+  <div id="hero__gallery">
+    <div>
+      {
+        images.map((image, index) => (
+          <img
+            src={image.src}
+            alt={image.alt}
+            height={360}
+            fetchpriority={index > 2 ? "low" : "high"}
+          />
+        ))
+      }
+    </div>
+    <span>Scroll to see more pictures!</span>
+  </div>
+
+  <div id="hero__text">
+    <span>Hey! I'm Arash.</span>
+    <h2>
+      I'm learning to create designed, intuitive, and practical products using
+      technology.
+    </h2>
+  </div>
+</section>
+
+<script>
+  import images from "../../data/heroImages";
+
+  const imageElements = document.querySelectorAll("#hero__gallery > div > img");
+  const missionElement = document.querySelector("#hero__text > h2");
+  imageElements.forEach((imageElement, index) => {
+    imageElement.addEventListener("mouseenter", () => {
+      missionElement.textContent = images[index].text;
+    });
+
+    imageElement.addEventListener("mouseleave", () => {
+      missionElement.textContent =
+        "I'm learning to create designed, intuitive, and practical products using technology.";
+    });
+  });
+
+  const greetings = ["Hey!", "Hello!", "Hi there,", "Hiya,", "Selamat datang!"];
+  setInterval(() => {
+    const greetingElement = document.querySelector("#hero__text > span");
+    const randomGreeting =
+      greetings[Math.floor(Math.random() * greetings.length)];
+    greetingElement.textContent = randomGreeting + " I'm Arash.";
+  }, 10000);
+</script>
+
+<style>
+  :root {
+    --image-height: 360px;
+  }
+
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: scroll;
+    display: flex;
+  }
+
+  #hero__gallery {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #hero__gallery > div {
+    display: flex;
+    position: absolute;
+    gap: 1.5em;
+  }
+
+  #hero__gallery > span {
+    position: relative;
+    margin-top: calc(var(--image-height) + 1em);
+    margin-left: 1em;
+    opacity: 0.5;
+  }
+
+  #hero__gallery > div > img {
+    height: var(--image-height);
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: filter 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  }
+
+  #hero__gallery > div > img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  #hero__text {
+    position: fixed;
+    align-self: flex-end;
+    margin: 4em;
+    margin-bottom: 6em;
+    background-color: #0a0a0a;
+  }
+
+  @media only screen and (min-width: 768px) {
+    #hero__text {
+      margin: 6em;
+      margin-bottom: 8em;
+    }
+
+    #hero__text > h2 {
+      max-width: calc(3 / 4 * 100vw);
+    }
+
+    #hero__text > span {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+    }
+
+    #hero__text > h2 {
+      font-size: clamp(3rem, 5vw, 4rem);
+    }
+  }
+
+  #hero__text > span {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  #hero__text > h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin: 0;
+  }
+</style>
