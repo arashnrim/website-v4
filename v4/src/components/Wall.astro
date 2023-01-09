@@ -1,0 +1,41 @@
+<section class="container">
+  <p>
+    I’m currently a student undergoing studies in information technology at a
+    polytechnic in Singapore. I love playing around with code and raging at
+    random and obscure errors. When I'm not coding, I'm probably resting somehow
+    or enjoying the moment with friends and family.
+  </p>
+  <p>
+    My journey in code began in 2019 (<span id="wall__time">a few</span> years ago!)
+    when I was introduced to programming with an Arduino. While I remain <i
+      >blur sotong</i
+    >
+    about hardware in general, learning more about it from no prior background set
+    the wheels in motion that led to me exploring programming. Jump cut to now and
+    I'm hoping to pursue programming as a career! I'm currently exploring front-end
+    development in greater detail, exploring frameworks, tools, and libraries as
+    I go.
+  </p>
+  <p>
+    Something new that I'm so passionate about exploring is the community behind
+    programming. I've had the opportunity to get to meet amazing people in the
+    community and I'm so grateful for that. I hope to pay things forward, be it
+    planning events or giving advice with what little I've learnt. I recently
+    helped organise workshops for <a
+      href="https://epoch.hackclub.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      >a 42-hour hackathon for teenagers in New Delhi</a
+    >; and that's a big step for me!
+  </p>
+</section>
+
+<script>
+  const wall__time = document.getElementById("wall__time");
+
+  setInterval(() => {
+    const time = new Date().valueOf() - new Date("02/01/2019").valueOf();
+    const years = time / 31536000000;
+    wall__time.textContent = "~" + years.toFixed(8);
+  }, 100);
+</script>

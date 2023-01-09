@@ -67,6 +67,7 @@ import images from "../../data/heroImages";
 
   #hero__gallery {
     display: flex;
+    position: absolute;
     flex-direction: column;
   }
 
@@ -96,39 +97,27 @@ import images from "../../data/heroImages";
   }
 
   #hero__text {
-    position: fixed;
+    position: sticky;
     align-self: flex-end;
-    margin: 4em;
+    left: var(--section-padding);
+    margin: var(--section-padding);
     margin-bottom: 6em;
     background-color: #0a0a0a;
   }
 
-  @media only screen and (min-width: 768px) {
-    #hero__text {
-      margin: 6em;
-      margin-bottom: 8em;
-    }
-
-    #hero__text > h2 {
-      max-width: calc(3 / 4 * 100vw);
-    }
-
-    #hero__text > span {
-      font-size: clamp(1.5rem, 5vw, 2.5rem);
-    }
-
-    #hero__text > h2 {
-      font-size: clamp(3rem, 5vw, 4rem);
-    }
-  }
-
   #hero__text > span {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: var(--subtitle);
   }
 
   #hero__text > h2 {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: var(--title);
     font-weight: 600;
     margin: 0;
+  }
+
+  @media only screen and (min-width: 768px) {
+    #hero__text {
+      margin-bottom: 8em;
+    }
   }
 </style>
