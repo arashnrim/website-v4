@@ -1,5 +1,6 @@
 ---
 import images from "../../data/heroImages";
+import { Image } from "@astrojs/image/components";
 ---
 
 <section id="hero">
@@ -7,11 +8,13 @@ import images from "../../data/heroImages";
     <div>
       {
         images.map((image, index) => (
-          <img
+          <Image
             src={image.src}
             alt={image.alt}
             height={360}
-            fetchpriority={index > 2 ? "low" : "high"}
+            aspectRatio="1"
+            format="webp"
+            fetchpriority={index > 1 ? "low" : "high"}
           />
         ))
       }
