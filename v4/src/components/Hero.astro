@@ -82,7 +82,7 @@ import { Image } from "@astrojs/image/components";
 
   #hero__gallery > span {
     position: relative;
-    margin-top: calc(var(--image-height) + 1em);
+    margin-top: 1em;
     margin-left: 1em;
     opacity: 0.5;
   }
@@ -102,8 +102,9 @@ import { Image } from "@astrojs/image/components";
   #hero__text {
     position: sticky;
     align-self: flex-end;
-    left: var(--section-padding);
-    margin: var(--section-padding);
+    left: calc(var(--section-padding) - 2em);
+    margin: calc(var(--section-padding) - 2em);
+    padding: 2em;
     margin-bottom: 6em;
     background-color: #0a0a0a;
   }
