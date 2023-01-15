@@ -1,0 +1,72 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="accordion">
+  <div class="accordion__header">
+    <h2>{title}</h2>
+  </div>
+  <div class="accordion__body">
+    <div class="accordion__content">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script>
+  const accordionHeaderElements =
+    document.querySelectorAll(".accordion__header");
+  const accordionBodyElements = document.querySelectorAll(".accordion__body");
+  accordionHeaderElements.forEach((accordionHeaderElement, index) => {
+    accordionHeaderElement.addEventListener("click", () => {
+      accordionBodyElements[index].classList.toggle("open");
+    });
+  });
+</script>
+
+<style>
+  .accordion {
+    border-top: 1px solid white;
+  }
+
+  .accordion:last-child {
+    border-bottom: 1px solid white;
+  }
+
+  .accordion__header {
+    padding: 2em 1em;
+    cursor: pointer;
+  }
+
+  .accordion__header > h2 {
+    margin: 0;
+    font-size: var(--subtitle);
+  }
+
+  .accordion__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-in;
+    padding: 0 1em;
+  }
+
+  .accordion__content {
+    overflow: hidden;
+  }
+
+  :global(.accordion__content > p:first-child) {
+    margin-top: 0;
+  }
+
+  :global(.accordion__content p) {
+    max-width: none;
+  }
+
+  .accordion__body.open {
+    grid-template-rows: 1fr;
+  }
+</style>
