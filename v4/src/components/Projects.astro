@@ -7,10 +7,12 @@ import easyMeshGradient from "easy-mesh-gradient";
 <section id="works" class="container">
   <h1 class="title">Works</h1>
   <p>
-    Ooh, it's show and tell already? Here are a few of my favourites. I love the
-    concept of learning in public, so I'm doing my best to make everything I do
-    as open-source as I can. Even if that means exposing API keys from time to
-    time.
+    Ooh, it's time for show and tell already? Here are some of my favourites
+    projects. I love the concept of learning in public, so I'm doing my best to
+    make everything I do as open-source as I can. Even if that means exposing
+    API keys from time to time. <span style="font-size: 12px"
+      >(happened before)</span
+    >
   </p>
 
   <div>
@@ -51,7 +53,11 @@ import easyMeshGradient from "easy-mesh-gradient";
                 </span>
               }
               {project.tech.map((lang) => (
-                <Icon pack="simple-icons" name={lang.iconName} />
+                <Icon
+                  pack="simple-icons"
+                  name={lang.iconName}
+                  title={lang.friendlyName}
+                />
               ))}
             </div>
 
@@ -217,6 +223,7 @@ import easyMeshGradient from "easy-mesh-gradient";
     .works__work,
     .works__work-large {
       grid-column: span 4;
+      height: 100%;
     }
   }
 
@@ -232,17 +239,34 @@ import easyMeshGradient from "easy-mesh-gradient";
 
   @media only screen and (min-width: 1080px) {
     section > div {
-      grid-auto-rows: 1fr;
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    .works__work {
+      grid-column: span 2;
+    }
+
+    .works__work-large {
+      grid-column: span 4;
+    }
+  }
+
+  @media only screen and (min-width: 1440px) {
+    section > div {
+      grid-template-columns: repeat(4, 1fr);
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0;
     }
 
     .works__work {
       grid-column: span 1;
-      aspect-ratio: 1 / 1;
+      height: 100%;
     }
 
     .works__work-large {
       grid-column: span 2;
-      aspect-ratio: auto;
+      min-height: 360px;
     }
   }
 </style>
