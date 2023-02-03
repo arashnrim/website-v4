@@ -25,6 +25,7 @@ const projects: Project[] = [
         tech: [
             { friendlyName: "TypeScript", iconName: "typescript" },
             { friendlyName: "Telegraf", iconName: "telegram" },
+            { friendlyName: "Railway", iconName: "railway" },
         ],
         description: "A Telegram bot that helps you find the best public route to your destination.",
         largeTile: true,
@@ -76,8 +77,39 @@ const projects: Project[] = [
             hue: 9,
             saturation: 1,
             lightness: 0.5,
+        },
+     },
+     {
+        name: "feducia",
+        githubLink: "https://github.com/arashnrim/feducia",
+        websiteLink: "https://devpost.com/software/feducia",
+        tech: [
+            { friendlyName: "Next.js", iconName: "nextdotjs" },
+            { friendlyName: "Tailwind CSS", iconName: "tailwindcss" },
+            { friendlyName: "Express", iconName: "express" },
+            { friendlyName: "Solidity", iconName: "solidity" },
+            { friendlyName: "Vercel", iconName: "vercel" },
+            { friendlyName: "Railway", iconName: "railway" },
+        ],
+        description: "A concept of what decentralised banking can look like with crypto.",
+        largeTile: false,
+        year: 2022,
+        backgroundColor: {
+            hue: 218,
+            saturation: 0.77,
+            lightness: 0.49
         }
-     }
+    },
+    {
+        name: "Desperate Defenders",
+        githubLink: "https://github.com/arashnrim/desperate-defenders",
+        tech: [
+            { friendlyName: "Python", iconName: "python" },
+        ],
+        description: "A small CLI tower defence game made with Python for a school assignment.",
+        largeTile: true,
+        year: 2022
+    }
 ]
 
 export default projects;
