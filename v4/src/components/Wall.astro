@@ -29,16 +29,18 @@
   </p>
 
   <figure>
-    <code class="sprinkle">Compilation error (line 8, col 12): ; expected</code>
-    <code class="sprinkle">
+    <code class="sprinkle" style="--rotate: -15deg">
+      Compilation error (line 8, col 12): ; expected
+    </code>
+    <code class="sprinkle" style="--rotate: 5deg">
       Access to fetch at '???' from origin 'https://arashnrim.me' has been
       blocked by CORS policy
     </code>
-    <code class="sprinkle">
+    <code class="sprinkle" style="--rotate: 0deg">
       Uncaught TypeError: Cannot read property 'foo' of undefined at
       anonymous:1:5
     </code>
-    <code class="sprinkle">
+    <code class="sprinkle" style="--rotate: -10deg">
       Stack overflow.<br />
       Repeat 24077 times:
     </code>
@@ -105,14 +107,12 @@
   figure > code:nth-child(1) {
     top: 5vh;
     right: 5vw;
-    transform: rotate(-15deg);
     max-width: 27.5vmin;
   }
 
   figure > code:nth-child(2) {
     top: 35vh;
     left: 10vw;
-    transform: rotate(5deg);
     max-width: 50vmin;
     font-size: 1.25rem;
   }
@@ -120,7 +120,6 @@
   figure > code:nth-child(3) {
     top: 26vh;
     right: 20vw;
-    transform: rotate(1deg);
     max-width: 30vmin;
     font-size: 1rem;
   }
@@ -128,7 +127,6 @@
   figure > code:nth-child(4) {
     top: 40vh;
     right: 7.5vw;
-    transform: rotate(-20deg);
     max-width: 25vmin;
     font-size: 1.25rem;
   }

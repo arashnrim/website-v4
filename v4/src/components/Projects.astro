@@ -39,7 +39,9 @@ import easyMeshGradient from "easy-mesh-gradient";
             class={`works__work ${
               project.largeTile ? "works__work-large" : ""
             }`}
-            style={gradient ? `background: ${gradient}` : ""}
+            style={`--min-range: -0.05em; --max-range: 0.45em; ${
+              gradient ? `background: ${gradient}` : ""
+            }`}
           >
             {gradient ? <div class="works__work-obstructor" /> : ""}
             <div class="works__work-meta">

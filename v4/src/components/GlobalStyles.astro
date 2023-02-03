@@ -75,13 +75,13 @@
 
   @keyframes float {
     0% {
-      transform: translateY(0);
+      transform: translateY(var(--min-range, -0.25rem)) rotate(var(--rotate, 0));
     }
     50% {
-      transform: translateY(-0.5em);
+      transform: translateY(var(--max-range, 0.25rem)) rotate(var(--rotate, 0));
     }
     100% {
-      transform: translateY(0);
+      transform: translateY(var(--min-range, -0.25rem)) rotate(var(--rotate, 0));
     }
   }
 
