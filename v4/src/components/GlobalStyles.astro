@@ -6,6 +6,8 @@
   :root {
     --section-padding: 4em;
 
+    --radius: 1em;
+
     --subtitle: clamp(1.5rem, 5vw, 2.5rem);
     --title: clamp(2rem, 5vw, 3rem);
     --body: clamp(1rem, 5vw, 1.1rem);
@@ -36,11 +38,12 @@
 
   *::selection {
     background-color: #333;
-    text-decoration: dotted;
   }
 
   .container {
     padding: var(--section-padding);
+    position: relative;
+    overflow: hidden;
   }
 
   p,
@@ -56,6 +59,10 @@
     padding: 0 2.5px;
   }
 
+  code {
+    font-family: "JetBrains Mono", "Courier New", Courier, monospace;
+  }
+
   h1,
   h2,
   h3,
@@ -63,5 +70,31 @@
   h5,
   h6 {
     font-weight: 600;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-0.5em);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .sprinkle {
+    position: absolute;
+    font-family: "JetBrains Mono", "Courier New", Courier, monospace;
+    opacity: 0.15;
+    user-select: none;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sprinkle {
+      animation: none;
+    }
   }
 </style>

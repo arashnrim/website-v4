@@ -1,27 +1,22 @@
-<section class="container">
+<section id="wall" class="container">
   <p>
-    I’m currently a student undergoing studies in information technology at a
-    polytechnic in Singapore. I love playing around with code and raging at
-    random and obscure errors. When I'm not coding, I'm probably resting somehow
-    or enjoying the moment with friends and family.
+    I’m a student learning information technology at a polytechnic in Singapore.
+    I love playing around with code and <span id="wall__errors"
+      >raging at random or obscure errors</span
+    >. When I'm not coding, I'm probably resting somehow or enjoying the moment
+    with friends and family.
   </p>
   <p>
-    My journey in code began in 2019 (<span id="wall__time">a few</span> years ago!)
-    when I was introduced to programming with an Arduino. While I remain <i
-      >blur sotong</i
-    >
-    about hardware in general, learning more about it from no prior background set
-    the wheels in motion that led to me exploring programming. Jump cut to now and
-    I'm hoping to pursue programming as a career! I'm currently exploring front-end
-    development in greater detail, exploring frameworks, tools, and libraries as
-    I go.
+    I can go on and on about my passion for tech, but tl;dr, I've been
+    interested in tech since young. My coding journey only really began in 2019
+    (<span id="wall__time">a few</span> years ago!) when I was introduced to programming
+    with an Arduino. I'm currently exploring front-end development in greater detail,
+    exploring frameworks, tools, and libraries as I go.
   </p>
   <p>
-    Something new that I'm so passionate about exploring is the community behind
-    programming. I've had the opportunity to get to meet amazing people in the
-    community and I'm so grateful for that. I hope to pay things forward, be it
-    planning events or giving advice with what little I've learnt. I recently
-    helped organise workshops for <a
+    Something new I want to try is exploring the community behind code. I hope
+    to pay things forward with what little I've learnt, and it's definitely a
+    work in progress! I recently helped organise workshops for <a
       href="https://epoch.hackclub.com"
       target="_blank"
       rel="noopener noreferrer"
@@ -32,14 +27,131 @@
       rel="noopener noreferrer">blog</a
     > from time to time, so feel free to stop by and read my thoughts!
   </p>
+
+  <figure>
+    <code class="sprinkle">Compilation error (line 8, col 12): ; expected</code>
+    <code class="sprinkle">
+      Access to fetch at '???' from origin 'https://arashnrim.me' has been
+      blocked by CORS policy
+    </code>
+    <code class="sprinkle">
+      Uncaught TypeError: Cannot read property 'foo' of undefined at
+      anonymous:1:5
+    </code>
+    <code class="sprinkle">
+      Stack overflow.<br />
+      Repeat 24077 times:
+    </code>
+  </figure>
 </section>
 
 <script>
   const wall__time = document.getElementById("wall__time");
-
   setInterval(() => {
     const time = new Date().valueOf() - new Date("02/01/2019").valueOf();
     const years = time / 31536000000;
     wall__time.textContent = "~" + years.toFixed(8);
   }, 100);
+
+  const wall__errors = document.getElementById("wall__errors");
+  const text = document.getElementById("wall").querySelectorAll("p");
+  const sprinkles = document
+    .getElementById("wall")
+    .querySelectorAll(".sprinkle");
+  wall__errors.addEventListener("mouseenter", () => {
+    text.forEach((p) => {
+      p.style.opacity = "0.1";
+    });
+    sprinkles.forEach((s) => {
+      (s as HTMLElement).style.opacity = "1";
+    });
+  });
+  wall__errors.addEventListener("mouseleave", () => {
+    text.forEach((p) => {
+      p.removeAttribute("style");
+    });
+    sprinkles.forEach((s) => {
+      (s as HTMLElement).style.opacity = "0.15";
+    });
+  });
+  wall__errors.addEventListener("touchleave", () => {
+    text.forEach((p) => {
+      p.removeAttribute("style");
+    });
+    sprinkles.forEach((s) => {
+      (s as HTMLElement).removeAttribute("style");
+    });
+  });
 </script>
+
+<style>
+  #wall > p {
+    transition: opacity 0.2s ease;
+  }
+
+  #wall__errors {
+    text-decoration: 1.75px dotted underline red;
+    cursor: help;
+  }
+
+  figure {
+    display: none;
+  }
+
+  figure > code {
+    transition: opacity 0.2s ease;
+  }
+
+  figure > code:nth-child(1) {
+    top: 5vh;
+    right: 5vw;
+    transform: rotate(-15deg);
+    max-width: 27.5vmin;
+  }
+
+  figure > code:nth-child(2) {
+    top: 35vh;
+    left: 10vw;
+    transform: rotate(5deg);
+    max-width: 50vmin;
+    font-size: 1.25rem;
+  }
+
+  figure > code:nth-child(3) {
+    top: 26vh;
+    right: 20vw;
+    transform: rotate(1deg);
+    max-width: 30vmin;
+    font-size: 1rem;
+  }
+
+  figure > code:nth-child(4) {
+    top: 40vh;
+    right: 7.5vw;
+    transform: rotate(-20deg);
+    max-width: 25vmin;
+    font-size: 1.25rem;
+  }
+
+  @media only screen and (min-width: 768px) {
+    figure {
+      display: block;
+    }
+  }
+
+  @media only screen and (min-width: 1440px) {
+    figure > code:nth-child(3) {
+      right: 32.5vw;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #wall > p {
+      transition: none;
+    }
+
+    figure > code {
+      transition: none;
+    }
+  }
+</style>

@@ -15,11 +15,12 @@ import { Image } from "@astrojs/image/components";
             aspectRatio="16:9"
             format="webp"
             fetchpriority={index > 1 ? "low" : "high"}
+            style={{ "--animation-order": index }}
           />
         ))
       }
     </div>
-    <span>Scroll to see more pictures!</span>
+    <span>Scroll right for more pictures! →</span>
   </div>
 
   <div id="hero__text">
@@ -57,15 +58,29 @@ import { Image } from "@astrojs/image/components";
 </script>
 
 <style>
-  :root {
-    --image-height: 360px;
+  @keyframes present {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   #hero {
     position: relative;
     min-height: 100vh;
     overflow-x: scroll;
+    scrollbar-width: none;
     display: flex;
+    background: radial-gradient(hsl(0, 0%, 16%) 2px, transparent 3px) 0 0 / 50px
+      50px;
+    background-color: #0a0a0a;
+  }
+
+  #hero::-webkit-scrollbar {
+    width: 0;
   }
 
   #hero__gallery {
@@ -76,22 +91,35 @@ import { Image } from "@astrojs/image/components";
 
   #hero__gallery > div {
     display: flex;
-    position: absolute;
     gap: 1.5em;
   }
 
   #hero__gallery > span {
-    position: relative;
-    margin-top: 1em;
-    margin-left: 1em;
     opacity: 0.5;
+    width: fit-content;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+  }
+
+  @keyframes loading {
+    0% {
+      background-color: hsl(0, 0%, 24%);
+    }
+    50% {
+      background-color: hsl(0, 0%, 12%);
+    }
+    100% {
+      background-color: hsl(0, 0%, 24%);
+    }
   }
 
   #hero__gallery > div > img {
-    height: var(--image-height);
-    filter: grayscale(100%);
-    opacity: 0.5;
+    height: 360px;
+    filter: grayscale(100%) brightness(50%);
     transition: filter 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    animation: 0.75s ease calc(var(--animation-order) * 200ms) 1 present,
+      3s ease-in-out infinite loading;
+    animation-fill-mode: backwards;
   }
 
   #hero__gallery > div > img:hover {
@@ -105,8 +133,9 @@ import { Image } from "@astrojs/image/components";
     left: calc(var(--section-padding) - 2em);
     margin: calc(var(--section-padding) - 2em);
     padding: 2em;
-    margin-bottom: 6em;
     background-color: #0a0a0a;
+    border-radius: var(--radius);
+    animation: 0.75s ease 0s 1 present;
   }
 
   #hero__text > span {
@@ -117,11 +146,5 @@ import { Image } from "@astrojs/image/components";
     font-size: var(--title);
     font-weight: 600;
     margin: 0;
-  }
-
-  @media only screen and (min-width: 768px) {
-    #hero__text {
-      margin-bottom: 8em;
-    }
   }
 </style>
