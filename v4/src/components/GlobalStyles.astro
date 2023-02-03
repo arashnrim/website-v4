@@ -11,6 +11,7 @@
     --subtitle: clamp(1.5rem, 5vw, 2.5rem);
     --title: clamp(2rem, 5vw, 3rem);
     --body: clamp(1rem, 5vw, 1.1rem);
+    --badge: clamp(0.75rem, 5vw, 1rem);
   }
 
   @media screen and (min-width: 768px) {
@@ -82,6 +83,25 @@
     100% {
       transform: translateY(0);
     }
+  }
+
+  .subtitle {
+    font-size: var(--subtitle);
+    margin: 0;
+  }
+
+  .title {
+    font-size: var(--title);
+    margin: 0;
+  }
+
+  .badge {
+    font: var(--badge);
+    width: fit-content;
+    background-color: #0a0a0a88;
+    padding: 0.2em 0.5em;
+    border-radius: 0.5em;
+    backdrop-filter: blur(0.5em);
   }
 
   .sprinkle {

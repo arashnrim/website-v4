@@ -1,0 +1,246 @@
+---
+import projects from "../../data/projects";
+import { Icon } from "astro-icon";
+import easyMeshGradient from "easy-mesh-gradient";
+---
+
+<section id="works" class="container">
+  <h1 class="title">Works</h1>
+  <p>
+    Ooh, it's show and tell already? Here are a few of my favourites. I love the
+    concept of learning in public, so I'm doing my best to make everything I do
+    as open-source as I can. Even if that means exposing API keys from time to
+    time.
+  </p>
+
+  <div>
+    {
+      projects.map((project) => {
+        let gradient;
+        if (project.backgroundColor !== undefined) {
+          gradient = easyMeshGradient({
+            hueRange: [
+              project.backgroundColor.hue - 15,
+              project.backgroundColor.hue + 15,
+            ],
+            saturationRange: [
+              project.backgroundColor.saturation - 0.1,
+              project.backgroundColor.saturation + 0.1,
+            ],
+            lightnessRange: [
+              project.backgroundColor.lightness - 0.1,
+              project.backgroundColor.lightness + 0.1,
+            ],
+          });
+        }
+
+        return (
+          <div
+            class={`works__work ${
+              project.largeTile ? "works__work-large" : ""
+            }`}
+            style={gradient ? `background: ${gradient}` : ""}
+          >
+            {gradient ? <div class="works__work-obstructor" /> : ""}
+            <div class="works__work-meta">
+              {
+                <span class="badge" style="--badge-color: #3d3d3d">
+                  {project.year}
+                </span>
+              }
+              {project.tech.map((lang) => (
+                <Icon pack="simple-icons" name={lang.iconName} />
+              ))}
+            </div>
+
+            <div>
+              <span class="subtitle">{project.name}</span>
+              <p>{project.description}</p>
+            </div>
+
+            <div class="works__work-links">
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon pack="simple-icons" name="github" />
+                GitHub
+              </a>
+              {project.websiteLink !== undefined && (
+                <a
+                  href={project.websiteLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon pack="ph" name="globe" />
+                  Website
+                </a>
+              )}
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>
+
+<script>
+  const works = document.querySelectorAll(".works__work");
+  works.forEach((work, index) => {
+    (work as HTMLDivElement).style.setProperty(
+      "--animation-delay",
+      index.toString()
+    );
+  });
+</script>
+
+<style>
+  section {
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  section > div {
+    margin: -2em;
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5em;
+  }
+
+  .works__work {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    grid-column: span 2;
+    background: #1f1f1f;
+    border-radius: var(--radius);
+    padding: 2em;
+    box-sizing: border-box;
+    user-select: none;
+    transition: transform 1s ease-in-out;
+    position: relative;
+    gap: 1em;
+  }
+
+  .works__work > *:not(.works__work-obstructor) {
+    z-index: 1;
+  }
+
+  .works__work-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+  }
+
+  .works__work-meta > * {
+    margin: 0;
+  }
+
+  .works__work:hover {
+    animation: float 3s ease-in-out calc(var(--animation-delay) * 250ms)
+      infinite;
+  }
+
+  .works__work-large {
+    grid-column: span 4;
+  }
+
+  .works__work-obstructor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #0a0a0a;
+    opacity: 0.2;
+  }
+
+  .works__work-links {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+  }
+
+  .works__work-links > a {
+    display: flex;
+    border-radius: 1em;
+    justify-content: center;
+    align-items: center;
+    background-color: #0a0a0a88;
+    backdrop-filter: blur(2em);
+    padding: 1em;
+    border: 0;
+    flex: 1;
+    gap: 0.5em;
+    transition: background-color 0.125s ease;
+  }
+
+  .works__work-links > a:nth-child(2) {
+    background-color: #0a0a0a44;
+  }
+
+  .works__work-links > a:hover {
+    background-color: #0a0a0aaa;
+  }
+
+  .works__work-links > a:hover:nth-child(2) {
+    background-color: #0a0a0a66;
+  }
+
+  .works__work-links > a > svg {
+    margin: 0;
+  }
+
+  [astro-icon] {
+    height: 1.5em;
+  }
+
+  @media only screen and (max-width: 360px) {
+    .works__work-links {
+      flex-direction: column;
+    }
+  }
+
+  @media only screen and (max-width: 860px) {
+    section > div {
+      grid-auto-rows: 1fr;
+    }
+
+    .works__work,
+    .works__work-large {
+      grid-column: span 4;
+    }
+  }
+
+  @media only screen and (min-width: 860px) {
+    .works__work {
+      grid-column: span 2;
+    }
+
+    .works__work-large {
+      grid-column: span 4;
+    }
+  }
+
+  @media only screen and (min-width: 1080px) {
+    section > div {
+      grid-auto-rows: 1fr;
+    }
+
+    .works__work {
+      grid-column: span 1;
+      aspect-ratio: 1 / 1;
+    }
+
+    .works__work-large {
+      grid-column: span 2;
+      aspect-ratio: auto;
+    }
+  }
+</style>
