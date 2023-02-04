@@ -5,12 +5,12 @@ interface Technology {
 
 interface Project {
     name: string;
-    githubLink: string;
+    githubLink?: string;
     websiteLink?: string;
-    tech: Technology[];
+    tech?: Technology[];
     description: string;
-    largeTile: boolean;
-    year: number;
+    largeTile?: boolean;
+    year?: number;
     backgroundColor?: {
         hue: number;
         saturation: number;
@@ -109,7 +109,8 @@ const projects: Project[] = [
         description: "A small CLI tower defence game made with Python for a school assignment.",
         largeTile: true,
         year: 2022
-    }
+    },
 ]
 
 export default projects;
+export type { Project };
