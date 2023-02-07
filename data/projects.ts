@@ -11,6 +11,7 @@ interface Project {
     description: string;
     largeTile?: boolean;
     year?: number;
+    image?: string;
     backgroundColor?: {
         hue: number;
         saturation: number;
@@ -30,6 +31,7 @@ const projects: Project[] = [
         description: "A Telegram bot that helps you find the best public route to your destination.",
         largeTile: true,
         year: 2022,
+        image: "/images/projects/commute.png",
         backgroundColor: {
             hue: 218,
             saturation: 1,
@@ -40,11 +42,12 @@ const projects: Project[] = [
         name: "tp",
         githubLink: "https://github.com/arashnrim/tp",
         tech: [
-            { friendlyName: "go", iconName: "go" },
+            { friendlyName: "Go", iconName: "go" },
         ],
         description: "A CLI tool that lets you teleport anywhere and run commands in an instant.",
         largeTile: false,
         year: 2022,
+        image: "/images/projects/tp.png",
      },
      {
         name: "Upgrade",
@@ -56,6 +59,7 @@ const projects: Project[] = [
         description: "An app for students to understand their academic achievements better.",
         largeTile: false,
         year: 2019,
+        image: "/images/projects/upgrade.png",
         backgroundColor: {
             hue: 263,
             saturation: 0.77,
@@ -73,6 +77,7 @@ const projects: Project[] = [
         description: "An open-sourced to-do list app made for everyone.",
         largeTile: false,
         year: 2019,
+        image: "/images/projects/liste.png",
         backgroundColor: {
             hue: 9,
             saturation: 1,
@@ -94,6 +99,7 @@ const projects: Project[] = [
         description: "A concept of what decentralised banking can look like with crypto.",
         largeTile: false,
         year: 2022,
+        image: "/images/projects/feducia.png",
         backgroundColor: {
             hue: 218,
             saturation: 0.77,
@@ -108,7 +114,8 @@ const projects: Project[] = [
         ],
         description: "A small CLI tower defence game made with Python for a school assignment.",
         largeTile: true,
-        year: 2022
+        year: 2022,
+        image: "/images/projects/desperate-defenders.png",
     },
 ]
 

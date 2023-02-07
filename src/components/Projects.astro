@@ -49,6 +49,9 @@ import easyMeshGradient from "easy-mesh-gradient";
               gradient ? `background: ${gradient}` : ""
             }`}
           >
+            {project.image !== undefined && (
+              <img class="works__work-image" src={project.image} />
+            )}
             {gradient ? <div class="works__work-obstructor" /> : ""}
             <div class="works__work-meta">
               {
@@ -168,9 +171,10 @@ import easyMeshGradient from "easy-mesh-gradient";
     padding: 2em;
     box-sizing: border-box;
     user-select: none;
-    transition: transform 1s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     position: relative;
     gap: 1em;
+    overflow: hidden;
   }
 
   .works__work > *:not(.works__work-obstructor) {
@@ -188,8 +192,7 @@ import easyMeshGradient from "easy-mesh-gradient";
   }
 
   .works__work:hover {
-    animation: float 3s ease-in-out calc(var(--animation-delay) * 250ms)
-      infinite;
+    transform: translateY(-5px);
   }
 
   .works__work-large {
@@ -245,6 +248,21 @@ import easyMeshGradient from "easy-mesh-gradient";
 
   .works__work-links > a > svg {
     margin: 0;
+  }
+
+  .works__work-image {
+    position: absolute;
+    left: calc(100% - 200px);
+    filter: grayscale(100%) opacity(0);
+    bottom: -50%;
+    height: 150%;
+    transform: rotate(-10deg) translate(0, 10px);
+    transition: filter 0.3s ease-in-out 0.1s, transform 0.3s ease-in-out 0.1s;
+  }
+
+  .works__work:hover .works__work-image {
+    transform: rotate(-10deg) translate(0, 0);
+    filter: grayscale(100%) opacity(0.25);
   }
 
   [astro-icon] {
