@@ -45,9 +45,7 @@ import easyMeshGradient from "easy-mesh-gradient";
             class={`works__work ${
               project.largeTile ? "works__work-large" : ""
             }`}
-            style={`--min-range: -0.45em; --max-range: 0.05em; ${
-              gradient ? `background: ${gradient}` : ""
-            }`}
+            style={gradient ? `background: ${gradient}` : ""}
           >
             {project.image !== undefined && (
               <img class="works__work-image" src={project.image} />
@@ -117,10 +115,7 @@ import easyMeshGradient from "easy-mesh-gradient";
       {
         scrappedProjects.map((project) => {
           return (
-            <div
-              class="works__graveyard-project"
-              style="--min-range: -0.45em; --max-range: 0.05em"
-            >
+            <div class="works__graveyard-project">
               <h3>{project.name}</h3>
               <p>{project.description}</p>
             </div>
@@ -130,16 +125,6 @@ import easyMeshGradient from "easy-mesh-gradient";
     </div>
   </div>
 </section>
-
-<script>
-  const works = document.querySelectorAll(".works__work");
-  works.forEach((work, index) => {
-    (work as HTMLDivElement).style.setProperty(
-      "--animation-delay",
-      index.toString()
-    );
-  });
-</script>
 
 <style>
   section {
@@ -191,7 +176,8 @@ import easyMeshGradient from "easy-mesh-gradient";
     margin: 0;
   }
 
-  .works__work:hover {
+  .works__work:hover,
+  .works__graveyard-project:hover {
     transform: translateY(-5px);
   }
 
@@ -231,7 +217,7 @@ import easyMeshGradient from "easy-mesh-gradient";
     border: 0;
     flex: 1;
     gap: 0.5em;
-    transition: background-color 0.125s ease;
+    transition: background-color 0.2s ease;
   }
 
   .works__work-links > a:nth-child(2) {
@@ -289,8 +275,9 @@ import easyMeshGradient from "easy-mesh-gradient";
   }
 
   #works__graveyard-projects {
-    margin-top: 1.5em;
     margin: 1.5em -1.95em 0 -1.95em;
+    padding: 0 1.95em;
+    width: fit-content;
     display: flex;
     gap: 1.5em;
     user-select: none;
@@ -301,10 +288,8 @@ import easyMeshGradient from "easy-mesh-gradient";
     background-color: #1f1f1f;
     min-width: 17.5vw;
     border-radius: var(--radius);
-  }
-
-  .works__graveyard-project:hover {
-    animation: float 3s ease-out 0s infinite;
+    transition: transform 0.3s ease-in-out;
+    overflow-y: visible;
   }
 
   .works__graveyard-project * {
@@ -377,6 +362,17 @@ import easyMeshGradient from "easy-mesh-gradient";
     .works__work-large {
       grid-column: span 2;
       min-height: 360px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .works__work:hover,
+    .works__graveyard-project:hover {
+      transition: none;
+    }
+
+    .works__work:hover .works__work-image {
+      transition: none;
     }
   }
 </style>

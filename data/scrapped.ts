@@ -16,7 +16,11 @@ const scrappedProjects: Project[] = [
   {
     name: "Storm",
     description: "A modern redesign of the Meterological Service Singapore's weather website.",
-  }
+  },
+  {
+    name: "Dissonance",
+    description: "A site to compare differences in curated lyrics between songs.",
+  },
 ];
 
 export default scrappedProjects;
