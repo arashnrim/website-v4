@@ -120,4 +120,4 @@ const projects: Project[] = [
 ]
 
 export default projects;
-export type { Project };
+export type { Project, Technology };

@@ -1,0 +1,147 @@
+---
+import skills from "../../data/skills";
+import Prism from "prismjs";
+import { Icon } from "astro-icon";
+---
+
+<section id="skills" class="container">
+  <h1 class="title">Skills</h1>
+  <p>
+    An idea that excites me is that you can never learn too much about
+    something. I've had the chance to hone skills in several domains as I grow,
+    and I intend to keep getting better at them. Here are a few!
+  </p>
+
+  <section id="skills__figure">
+    <div id="skills__figure-header">
+      <span>tech.js</span>
+    </div>
+    <div id="skills__figure-main">
+      <div id="skills__figure-code">
+        <pre><code>{`const skills = ${JSON.stringify(skills, undefined, 2)}`}</code></pre>
+      </div>
+      <div id="skills__figure-preview">
+        {
+          skills.map((skill) => (
+            <div class="skills__figure-skill">
+              <div class="skills__figure-skill__header">
+                <Icon pack="simple-icons" name={skill.iconName} />
+                <h3>{skill.friendlyName}</h3>
+              </div>
+              <div class="skills__figure-skill__badges">
+                <span class="badge">{skill.yearLearnt}</span>
+                <span class="badge">{skill.category}</span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</section>
+
+<style>
+  #skills__figure {
+    width: 100%;
+    border-radius: 1em;
+    border: 2px solid #1f1f1f;
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+  }
+
+  #skills__figure-header {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5em 1em;
+    border-bottom: 1px solid #1f1f1f;
+  }
+
+  #skills__figure-header > span {
+    font-size: 1em;
+  }
+
+  #skills__figure-main {
+    display: flex;
+    flex-direction: column-reverse;
+    flex: 1;
+    max-height: 50vh;
+  }
+
+  #skills__figure-code {
+    flex: 1.5;
+    padding: 1em;
+    overflow-y: scroll;
+    display: none;
+  }
+
+  #skills__figure-code * {
+    display: block;
+    margin: 0;
+  }
+
+  #skills__figure-code > code span {
+    font-family: "JetBrains Mono", "Courier New", Courier, monospace !important;
+    background-color: aqua;
+  }
+
+  #skills__figure-preview {
+    flex: 1;
+    border-top: 1px solid #1f1f1f;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    overflow-y: scroll;
+  }
+
+  .skills__figure-skill {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    border-radius: 1em;
+    background-color: #1f1f1f;
+    padding: 1.25em;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .skills__figure-skill:hover {
+    transform: translateY(-5px);
+  }
+
+  .skills__figure-skill__header {
+    display: flex;
+    gap: 0.75em;
+    align-items: center;
+  }
+
+  .skills__figure-skill__header > h3 {
+    margin: 0;
+  }
+
+  [astro-icon] {
+    height: 1.5em;
+  }
+
+  .skills__figure-skill__badges {
+    display: flex;
+    gap: 0.5em;
+  }
+
+  @media only screen and (min-width: 768px) {
+    #skills__figure-main {
+      flex-direction: row;
+    }
+
+    #skills__figure-code {
+      display: block;
+    }
+
+    #skills__figure-preview {
+      flex: 1;
+      border-top: none;
+      border-left: 1px solid #1f1f1f;
+    }
+  }
+</style>
