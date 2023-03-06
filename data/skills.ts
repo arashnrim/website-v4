@@ -1,4 +1,4 @@
-import type { Technology } from "./projects";
+import type { Technology } from "./works";
 
 enum SkillCategory {
   Programming = "Programming",

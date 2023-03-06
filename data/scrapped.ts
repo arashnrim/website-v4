@@ -1,4 +1,4 @@
-import type { Project } from "./projects";
+import type { Project } from "./works";
 
 const scrappedProjects: Project[] = [
   {
@@ -11,15 +11,18 @@ const scrappedProjects: Project[] = [
   },
   {
     name: "Datum",
-    description: "A friendly multi-purpose Discord bot that helps your server experience better.",
+    description:
+      "A friendly multi-purpose Discord bot that helps your server experience better.",
   },
   {
     name: "Storm",
-    description: "A modern redesign of the Meterological Service Singapore's weather website.",
+    description:
+      "A modern redesign of the Meterological Service Singapore's weather website.",
   },
   {
     name: "Dissonance",
-    description: "A site to compare differences in curated lyrics between songs.",
+    description:
+      "A site to compare differences in curated lyrics between songs.",
   },
 ];
 
