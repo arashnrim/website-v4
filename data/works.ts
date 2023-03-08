@@ -11,13 +11,20 @@ interface Project {
   description: string;
   largeTile?: boolean;
   year?: number;
-  image?: string;
+  image?: ImageMetadata;
   backgroundColor?: {
     hue: number;
     saturation: number;
     lightness: number;
   };
 }
+
+import commute from "./public/images/works/commute.png";
+import desperateDefenders from "./public/images/works/desperate-defenders.png";
+import feducia from "./public/images/works/feducia.png";
+// import liste from "./public/images/works/liste.png";
+import tp from "./public/images/works/tp.png";
+import upgrade from "./public/images/works/upgrade.png";
 
 const projects: Project[] = [
   {
@@ -32,7 +39,7 @@ const projects: Project[] = [
       "A Telegram bot that helps you find the best public route to your destination.",
     largeTile: true,
     year: 2022,
-    image: "/images/works/commute.png",
+    image: commute,
     backgroundColor: {
       hue: 218,
       saturation: 1,
@@ -47,7 +54,7 @@ const projects: Project[] = [
       "A CLI tool that lets you teleport anywhere and run commands in an instant.",
     largeTile: false,
     year: 2022,
-    image: "/images/works/tp.png",
+    image: tp,
   },
   {
     name: "Upgrade",
@@ -60,7 +67,7 @@ const projects: Project[] = [
       "An app for students to understand their academic achievements better.",
     largeTile: false,
     year: 2019,
-    image: "/images/works/upgrade.png",
+    image: upgrade,
     backgroundColor: {
       hue: 263,
       saturation: 0.77,
@@ -79,7 +86,7 @@ const projects: Project[] = [
     description: "An open-sourced to-do list app made for everyone.",
     largeTile: false,
     year: 2019,
-    image: "/images/works/liste.png",
+    // image: liste,
     backgroundColor: {
       hue: 9,
       saturation: 1,
@@ -102,7 +109,7 @@ const projects: Project[] = [
       "A concept of what decentralised banking can look like with crypto.",
     largeTile: false,
     year: 2022,
-    image: "/images/works/feducia.png",
+    image: feducia,
     backgroundColor: {
       hue: 218,
       saturation: 0.77,
@@ -117,7 +124,7 @@ const projects: Project[] = [
       "A small CLI tower defence game made with Python for a school assignment.",
     largeTile: true,
     year: 2022,
-    image: "/images/works/desperate-defenders.png",
+    image: desperateDefenders,
   },
 ];
 

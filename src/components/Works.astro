@@ -3,6 +3,7 @@ import projects from "../../data/works";
 import scrappedProjects from "../../data/scrapped";
 import { Icon } from "astro-icon";
 import easyMeshGradient from "easy-mesh-gradient";
+import { Image } from "@astrojs/image/components";
 ---
 
 <section id="works" class="container">
@@ -48,7 +49,15 @@ import easyMeshGradient from "easy-mesh-gradient";
             style={gradient ? `background: ${gradient}` : ""}
           >
             {project.image !== undefined && (
-              <img class="works__work-image" src={project.image} />
+              <Image
+                class="works__work-image"
+                src={project.image}
+                height={project.image.height}
+                width={project.image.width}
+                quality={50}
+                format={"webp"}
+                alt="JoJo"
+              />
             )}
             {gradient ? <div class="works__work-obstructor" /> : ""}
             <div class="works__work-meta">
@@ -237,16 +246,20 @@ import easyMeshGradient from "easy-mesh-gradient";
 
   .works__work-image {
     position: absolute;
-    left: calc(100% - 200px);
     filter: grayscale(100%) opacity(0);
-    bottom: -50%;
-    height: 150%;
-    transform: rotate(-10deg) translate(0, 10px);
+    left: 50%;
+    top: 0%;
+    transform: rotate(-10deg) translate(0, 10px) scale(0.5);
+    transform-origin: top left;
     transition: filter 0.3s ease-in-out 0.1s, transform 0.3s ease-in-out 0.1s;
   }
 
+  .works__work:not(.works__work-large) .works__work-image {
+    left: 35%;
+  }
+
   .works__work:hover .works__work-image {
-    transform: rotate(-10deg) translate(0, 0);
+    transform: rotate(-10deg) translate(0, 0) scale(0.5);
     filter: grayscale(100%) opacity(0.25);
   }
 
