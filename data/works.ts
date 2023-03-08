@@ -19,12 +19,12 @@ interface Project {
   };
 }
 
-import commute from "./public/images/works/commute.png";
-import desperateDefenders from "./public/images/works/desperate-defenders.png";
-import feducia from "./public/images/works/feducia.png";
-// import liste from "./public/images/works/liste.png";
-import tp from "./public/images/works/tp.png";
-import upgrade from "./public/images/works/upgrade.png";
+import commute from "../public/images/works/commute.png";
+import desperateDefenders from "../public/images/works/desperate-defenders.png";
+import feducia from "../public/images/works/feducia.png";
+// import liste from "../public/images/works/liste.png";
+import tp from "../public/images/works/tp.png";
+import upgrade from "../public/images/works/upgrade.png";
 
 const projects: Project[] = [
   {
