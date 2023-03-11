@@ -44,7 +44,8 @@ import { Icon } from "astro-icon";
     width: 100%;
     border-radius: 1em;
     border: 2px solid #1f1f1f;
-    margin-top: 3em;
+    margin: 3rem -2em 0 -2em;
+    width: auto;
     display: flex;
     flex-direction: column;
     user-select: none;
@@ -129,6 +130,11 @@ import { Icon } from "astro-icon";
   }
 
   @media only screen and (min-width: 768px) {
+    #skills__figure {
+      margin: 3rem 0 0 0;
+      width: auto;
+    }
+
     #skills__figure-main {
       flex-direction: row;
     }
