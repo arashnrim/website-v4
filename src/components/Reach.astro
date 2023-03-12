@@ -1,0 +1,109 @@
+---
+import { Icon } from "astro-icon";
+
+const socials = [
+  {
+    name: "Email",
+    description: "A general, catch-all address for anything",
+    url: "mailto:hello@arashnrim.me",
+    linkText: "hello [@] arashnrim [.] me",
+    iconName: "ph:envelope-simple",
+  },
+  {
+    name: "LinkedIn",
+    description: "For professional inquiries and networking",
+    url: "https://linkedin.com/in/arashnrim",
+    linkText: "arashnrim",
+    iconName: "simple-icons:linkedin",
+  },
+  {
+    name: "GitHub",
+    description: "Source code for my projects and contributions",
+    url: "https://github.com/arashnrim",
+    linkText: "arashnrim",
+    iconName: "simple-icons:github",
+  },
+];
+---
+
+<section id="reach" class="container">
+  <h1 class="title">Reach</h1>
+  <p>
+    Don't be a stranger! Now that you've scrolled this far, I'd love to get to
+    know who you are. If you have the time, feel free to reach out to me through
+    any of the avenues below. Getting to know each other can be a great way to
+    learn and grow, from you to me and vice versa!
+  </p>
+
+  <div id="reach__grid">
+    {
+      socials.map((social) => (
+        <div class="reach__grid__item">
+          <Icon name={social.iconName} />
+          <h2>{social.name}</h2>
+          <span class="subtitle">
+            <a href={social.url} target="_blank" rel="noreferrer noopener">
+              {social.linkText}
+            </a>
+          </span>
+          <p>{social.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  #reach__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3em;
+    margin-top: 3rem;
+  }
+
+  .reach__grid__item {
+    width: auto;
+    overflow-x: scroll;
+    position: relative;
+    padding: 2em;
+    background-color: #1f1f1f;
+    border-radius: 1em;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .reach__grid__item:hover {
+    transform: translateY(-5px);
+  }
+
+  .reach__grid__item > h2,
+  .reach__grid__item > p {
+    margin: 0;
+  }
+
+  .reach__grid__item > span {
+    display: block;
+    line-height: 1.28;
+    margin: 0.5em 0;
+  }
+
+  .reach__grid__item > span > a {
+    font-weight: 700;
+  }
+
+  [astro-icon] {
+    width: 50%;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: rotate(10deg) translateY(10px);
+    left: -10%;
+    top: -25%;
+    pointer-events: none;
+  }
+
+  .reach__grid__item:hover [astro-icon] {
+    opacity: 0.1;
+    transform: rotate(10deg) translateY(0);
+  }
+</style>
