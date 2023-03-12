@@ -25,7 +25,7 @@ import { Icon } from "astro-icon";
             <div class="skills__figure-skill">
               <div class="skills__figure-skill__header">
                 <Icon pack="simple-icons" name={skill.iconName} />
-                <h3>{skill.friendlyName}</h3>
+                <span>{skill.friendlyName}</span>
               </div>
               <div class="skills__figure-skill__badges">
                 <span class="badge">{skill.yearLearnt}</span>
@@ -116,8 +116,9 @@ import { Icon } from "astro-icon";
     align-items: center;
   }
 
-  .skills__figure-skill__header > h3 {
+  .skills__figure-skill__header > span {
     margin: 0;
+    font-weight: 700;
   }
 
   [astro-icon] {
